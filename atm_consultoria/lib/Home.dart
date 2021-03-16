@@ -1,14 +1,41 @@
+import 'package:atm_consultoria/TelaCliente.dart';
+import 'package:atm_consultoria/TelaContato.dart';
+import 'package:atm_consultoria/TelaEmpresa.dart';
+import 'package:atm_consultoria/TelaServico.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
-void _abrirEmpresa() {
-
-}
 
 class _HomeState extends State<Home> {
+
+  void _abrirEmpresa(){
+    Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context)=> TelaEmpresa() ));
+  }
+
+  void _abrirServico(){
+    Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context)=> TelaServico() ));
+  }
+
+  void _abrirCliente(){
+    Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context)=> TelaCliente() ));
+  }
+
+  void _abrirContato(){
+    Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context)=> TelaContato() ));
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,42 +45,40 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.green,
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(vertical: 100, horizontal: 60),
+        padding: EdgeInsets.all(16),
         child: Column(
-          //mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset("images/logo.png"),
             Padding(
-              padding: const EdgeInsets.only(top: 32),
+              padding: EdgeInsets.only(top: 32),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   GestureDetector(
-                      child: Image.asset("images/menu_empresa.png"),
                     onTap: _abrirEmpresa,
-
+                    child: Image.asset("images/menu_empresa.png"),
                   ),
                   GestureDetector(
-                      child: Image.asset("images/menu_servico.png"),
-                    onTap: _abrirEmpresa,
+                    onTap: _abrirServico,
+                    child: Image.asset("images/menu_servico.png"),
                   )
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 32),
+              padding: EdgeInsets.only(top: 32),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   GestureDetector(
+                    onTap: _abrirCliente,
                     child: Image.asset("images/menu_cliente.png"),
-                    onTap: _abrirEmpresa,
-
                   ),
                   GestureDetector(
+                    onTap: _abrirContato,
                     child: Image.asset("images/menu_contato.png"),
-                    onTap: _abrirEmpresa,
                   )
                 ],
               ),
